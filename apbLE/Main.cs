@@ -13,6 +13,10 @@ namespace apbLE
         string localizationCode = "1031";
         char[] equal = new char[1] { '=' };
 
+        int prevSelectedIndexFileListBox = -1;
+        int prevSelectedIndexVariableComboBox = -1;
+        int prevSelectedIndexVariableListBox = -1;
+
         public Main()
         {
             InitializeComponent();
@@ -112,26 +116,41 @@ namespace apbLE
 
         private void FileListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (FileListBox.SelectedItem != null)
+            if (FileListBox.SelectedItem != null && prevSelectedIndexFileListBox != FileListBox.SelectedIndex && AskSaveChanges())
             {
                 GetLocalizationFileSections(FileListBox.SelectedItem.ToString());
+                prevSelectedIndexFileListBox = FileListBox.SelectedIndex;
                 VariableListBox.Enabled = true;
+            }
+            else
+            {
+                FileListBox.SelectedIndex = prevSelectedIndexFileListBox;
             }
         }
 
         private void VariableComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (VariableComboBox.SelectedItem != null)
+            if (VariableComboBox.SelectedItem != null && prevSelectedIndexVariableComboBox != VariableComboBox.SelectedIndex && AskSaveChanges())
             {
                 GetLocalizationFileVariable(VariableComboBox.Text);
+                prevSelectedIndexVariableComboBox = VariableComboBox.SelectedIndex;
+            }
+            else
+            {
+                VariableComboBox.SelectedIndex = prevSelectedIndexVariableComboBox;
             }
         }
 
         private void VariableListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (VariableListBox.SelectedItem != null)
+            if (VariableListBox.SelectedItem != null && prevSelectedIndexVariableListBox != VariableListBox.SelectedIndex && AskSaveChanges())
             {
                 GetLocalizationFileVariableText(VariableListBox.SelectedItem.ToString());
+                prevSelectedIndexVariableListBox = VariableListBox.SelectedIndex;
+            }
+            else
+            {
+                VariableListBox.SelectedIndex = prevSelectedIndexVariableListBox;
             }
         }
 
@@ -157,8 +176,21 @@ namespace apbLE
             string file = FileListBox.SelectedItem.ToString();
             var locFile = new IniFile(String.Format("{0}\\APBGame\\Localization\\{1}\\{2}.{1}", gamePath, localizationExt, file));
             locFile.Write(VariableListBox.SelectedItem.ToString(), VariableTextBox.Text.Replace(Environment.NewLine, " "), VariableComboBox.Text);
-            PreviewTextBox.Text = VariableTextBox.Text.Replace(Environment.NewLine, " ");
+            PreviewTextBox.Text = VariableTextBox.Text.Replace(Environment.NewLine, "↵");
             PreviewTextBox.BackColor = System.Drawing.Color.Empty;
+        }
+
+        private bool AskSaveChanges()
+        {
+            if (VariableTextBox.Text != PreviewTextBox.Text)
+            {
+                DialogResult dialogResult = MessageBox.Show("You have unsaved changes. Discard?", "Unsaved changes", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.No)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         private void GetLocalizationFileSections(string file)
@@ -290,7 +322,10 @@ namespace apbLE
 
         private void ReloadFileListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CheckSettings();
+            if (AskSaveChanges())
+            {
+                CheckSettings();
+            }
         }
 
         private void ResetLocalizationFilesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -319,7 +354,10 @@ namespace apbLE
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            if (AskSaveChanges())
+            {
+                Application.Exit();
+            }
         }
     }
 }
