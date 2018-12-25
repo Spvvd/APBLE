@@ -171,7 +171,7 @@
             this.FileListBox.Location = new System.Drawing.Point(10, 24);
             this.FileListBox.Name = "FileListBox";
             this.FileListBox.Size = new System.Drawing.Size(250, 415);
-            this.FileListBox.TabIndex = 2;
+            this.FileListBox.TabIndex = 0;
             this.FileListBox.SelectedIndexChanged += new System.EventHandler(this.FileListBox_SelectedIndexChanged);
             // 
             // PanelSpacerLeft
@@ -193,7 +193,7 @@
             this.VariableListBox.Location = new System.Drawing.Point(3, 30);
             this.VariableListBox.Name = "VariableListBox";
             this.VariableListBox.Size = new System.Drawing.Size(489, 381);
-            this.VariableListBox.TabIndex = 5;
+            this.VariableListBox.TabIndex = 2;
             this.VariableListBox.SelectedIndexChanged += new System.EventHandler(this.VariableListBox_SelectedIndexChanged);
             // 
             // VariableTextBox
@@ -204,7 +204,7 @@
             this.VariableTextBox.Multiline = true;
             this.VariableTextBox.Name = "VariableTextBox";
             this.VariableTextBox.Size = new System.Drawing.Size(299, 187);
-            this.VariableTextBox.TabIndex = 6;
+            this.VariableTextBox.TabIndex = 4;
             this.VariableTextBox.TextChanged += new System.EventHandler(this.VariableTextBox_TextChanged);
             // 
             // PanelRight
@@ -236,7 +236,7 @@
             this.PreviewTextBox.Name = "PreviewTextBox";
             this.PreviewTextBox.ReadOnly = true;
             this.PreviewTextBox.Size = new System.Drawing.Size(299, 187);
-            this.PreviewTextBox.TabIndex = 0;
+            this.PreviewTextBox.TabIndex = 3;
             // 
             // OptionsPanelRight
             // 
@@ -255,7 +255,7 @@
             this.ReloadVariableButton.Location = new System.Drawing.Point(143, 5);
             this.ReloadVariableButton.Name = "ReloadVariableButton";
             this.ReloadVariableButton.Size = new System.Drawing.Size(75, 23);
-            this.ReloadVariableButton.TabIndex = 8;
+            this.ReloadVariableButton.TabIndex = 5;
             this.ReloadVariableButton.Text = "Reload";
             this.ReloadVariableButton.UseVisualStyleBackColor = true;
             this.ReloadVariableButton.Click += new System.EventHandler(this.ReloadVariableButton_Click);
@@ -267,7 +267,7 @@
             this.SaveVariableButton.Location = new System.Drawing.Point(224, 5);
             this.SaveVariableButton.Name = "SaveVariableButton";
             this.SaveVariableButton.Size = new System.Drawing.Size(75, 23);
-            this.SaveVariableButton.TabIndex = 7;
+            this.SaveVariableButton.TabIndex = 6;
             this.SaveVariableButton.Text = "Save";
             this.SaveVariableButton.UseVisualStyleBackColor = true;
             this.SaveVariableButton.Click += new System.EventHandler(this.SaveVariableButton_Click);
@@ -305,7 +305,7 @@
             this.VariableComboBox.Location = new System.Drawing.Point(3, 0);
             this.VariableComboBox.Name = "VariableComboBox";
             this.VariableComboBox.Size = new System.Drawing.Size(489, 21);
-            this.VariableComboBox.TabIndex = 9;
+            this.VariableComboBox.TabIndex = 1;
             this.VariableComboBox.SelectedIndexChanged += new System.EventHandler(this.VariableComboBox_SelectedIndexChanged);
             // 
             // PanelMiddle

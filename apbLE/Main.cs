@@ -158,7 +158,7 @@ namespace apbLE
         {
             if (PreviewTextBox.Text != VariableTextBox.Text)
             {
-                PreviewTextBox.BackColor = System.Drawing.Color.Red;
+                PreviewTextBox.BackColor = System.Drawing.Color.LightYellow;
             }
             else
             {
