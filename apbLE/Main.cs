@@ -120,6 +120,7 @@ namespace apbLE
             {
                 GetLocalizationFileSections(FileListBox.SelectedItem.ToString());
                 prevSelectedIndexFileListBox = FileListBox.SelectedIndex;
+                prevSelectedIndexVariableComboBox = -1;
                 VariableListBox.Enabled = true;
             }
             else
