@@ -209,6 +209,22 @@ namespace apbLE
             {
                 VariableComboBox.Items.Add(sectionName);
             }
+
+            if (VariableComboBox.Items.Count > 0)
+            {
+                VariableComboBox.SelectedIndex = 0;
+            }
+            else
+            {
+                ReadFileWithoutSections(file);
+            }
+        }
+
+        private void ReadFileWithoutSections(string file)
+        {
+            string text = File.ReadAllText(String.Format("{0}\\APBGame\\Localization\\{1}\\{2}.{1}", gamePath, localizationExt, file));
+            PreviewTextBox.Text = text;
+            VariableTextBox.Text = text;
         }
 
         private void GetLocalizationFileVariable(string section)
@@ -340,7 +356,6 @@ namespace apbLE
                     CreateLocalizationFiles();
                     CheckSettings();
                 }
-
             }
             else
             {

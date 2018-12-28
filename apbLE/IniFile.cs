@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -83,7 +84,16 @@ namespace apbLE
 
             foreach (string entry in tmp)
             {
-                result.Add(entry.Substring(0, entry.IndexOf("=")));
+                
+                try
+                {
+                    result.Add(entry.Substring(0, entry.IndexOf("=")));
+                }
+                catch (System.ArgumentOutOfRangeException)
+                {
+                    Console.WriteLine("Error: empty entry in currently selected section");
+                }
+                
             }
 
             return result;
